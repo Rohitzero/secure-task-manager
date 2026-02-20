@@ -8,7 +8,7 @@ function Dashboard() {
 
   // 🔹 Load tasks from backend
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/tasks')
+    fetch('https://secure-task-manager-aam9.onrender.com/tasks')
 
       .then(res => res.json())
       .then(data => setTasks(data));
@@ -19,7 +19,7 @@ function Dashboard() {
     e.preventDefault();
     if (!newTitle || !newDescription) return;
 
-    const response = await fetch('http://localhost:5000/tasks', {
+    const response = await fetch('https://secure-task-manager-aam9.onrender.com/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
