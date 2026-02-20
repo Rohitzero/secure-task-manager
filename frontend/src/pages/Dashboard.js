@@ -8,7 +8,7 @@ function Dashboard() {
 
   // 🔹 Load tasks from backend
   useEffect(() => {
-    fetch('https://secure-task-manager-aam9.onrender.com/tasks')
+    fetch('http://localhost:5000/tasks')
 
       .then(res => res.json())
       .then(data => setTasks(data));
@@ -19,7 +19,7 @@ function Dashboard() {
     e.preventDefault();
     if (!newTitle || !newDescription) return;
 
-    const response = await fetch('https://secure-task-manager-aam9.onrender.com/tasks', {
+    const response = await fetch('http://localhost:5000/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -38,7 +38,7 @@ function Dashboard() {
 
   // 🔹 Toggle complete
   const toggleComplete = async (id, completed) => {
-    const response = await fetch(`https://secure-task-manager-aam9.onrender.com/tasks/${id}`, {
+    const response = await fetch(`http://localhost:5000/tasks/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ completed: !completed })
@@ -50,7 +50,7 @@ function Dashboard() {
 
   // 🔹 Delete task
   const deleteTask = async (id) => {
-    await fetch(`https://secure-task-manager-aam9.onrender.com/tasks/${id}`, {
+    await fetch(`http://localhost:5000/tasks/${id}`, {
       method: 'DELETE'
     });
 
